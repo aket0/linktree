@@ -30,7 +30,7 @@ python3 -m virtualenv venv
 source venv/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirement.txt
 
 # Run migrations
 python manage.py migrate
