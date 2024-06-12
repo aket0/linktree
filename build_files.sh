@@ -22,8 +22,8 @@ fi
 if ! command -v pg_config &> /dev/null
 then
     echo "pg_config could not be found, installing PostgreSQL development libraries..."
-    apt-get update
-    apt-get install -y libpq-dev
+    apt  update
+    apt  install -y libpq-dev
 fi
 
 # Install virtualenv if not already installed
