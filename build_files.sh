@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Check if python3 is installed
+# Ensure python3 is installed
 if ! command -v python3 &> /dev/null
 then
     echo "python3 could not be found"
@@ -8,9 +8,8 @@ then
 fi
 
 python3 --version
-pip3 --version
 
-# Check if pip3 is installed and install it if necessary
+# Ensure pip is installed
 if ! command -v pip3 &> /dev/null
 then
     echo "pip3 could not be found, installing it now..."
@@ -18,13 +17,7 @@ then
     python3 get-pip.py
 fi
 
-# Install PostgreSQL development libraries if using psycopg2 instead of psycopg2-binary
-if ! command -v pg_config &> /dev/null
-then
-    echo "pg_config could not be found, installing PostgreSQL development libraries..."
-    apt  update
-    apt  install -y libpq-dev
-fi
+pip3 --version
 
 # Install virtualenv if not already installed
 if ! pip3 show virtualenv &> /dev/null
@@ -36,11 +29,8 @@ fi
 python3 -m virtualenv venv
 source venv/bin/activate
 
-# Check installed packages
-pip list
-
 # Install dependencies
-pip install -r requirement.txt
+pip install -r requirements.txt
 
 # Run migrations
 python manage.py migrate
